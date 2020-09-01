@@ -52,8 +52,8 @@ def turn(board)
     input = gets.strip
     index = input_to_index(input)
   end
-  x_or_o = current_player(board)
-  move(board, index, x_or_o)
+  cur_pl = current_player(board)
+  move(board, index, cur_pl)
   display_board(board)
 end
 
