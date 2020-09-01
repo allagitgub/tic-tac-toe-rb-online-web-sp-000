@@ -70,3 +70,34 @@ def current_player(board)
   turns = turn_count(board)
   return turns % 2 == 0 ? "X" : "O"
 end
+
+def won?(board)
+  WIN_COMBINATIONS.detect do |win_combination|
+    (board[win_combination[0]] == "X" && board[win_combination[1]] == "X" && board[win_combination[2]] == "X") ||
+    (board[win_combination[0]] == "O" && board[win_combination[1]] == "O" && board[win_combination[2]] == "O")
+ end
+end
+
+def full?(board)
+  board.select{ |item| item != " " && !item.nil? && item != ""}.size == 9
+end
+
+def draw?(board)
+  !(won?(board) || !full?(board))
+end
+
+def over?(board)
+  won?(board) || full?(board) || draw?(board)
+end
+
+def winner(board)
+  if(won?(board))
+    if( WIN_COMBINATIONS.detect {|win_combination|
+      (board[win_combination[0]] == "X" && board[win_combination[1]] == "X" && board[win_combination[2]] == "X") })
+      return  "X"
+    else
+      return "O"
+    end
+  end
+   nil
+end
