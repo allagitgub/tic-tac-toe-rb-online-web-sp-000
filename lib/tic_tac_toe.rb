@@ -53,7 +53,7 @@ def turn(board)
     index = input_to_index(input)
   end
   x_or_o = current_player(board)
-  move(board, index, x_or_o"X")
+  move(board, index, x_or_o)
   display_board(board)
 end
 
